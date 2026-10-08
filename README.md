@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dynamic Portfolio Dashboard
 
-## Getting Started
+A sector-grouped, live-refreshing view of a 29-holding equity portfolio (26 active, 3 realized),
+built with the Next.js App Router. Fetches real CMP from Yahoo Finance and real P/E ratio from
+Google Finance (both unofficial, scraped sources — see `TECHNICAL_WRITEUP.md` for exactly how
+and where that breaks down), with automatic per-field fallback to generated mock data when a
+source can't resolve a given holding.
 
-First, run the development server:
+## Tech stack
+
+Next.js (App Router) · TypeScript (strict) · Tailwind CSS v4 · Motion (motion.dev) · Recharts ·
+`@tanstack/react-table`
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). Requires outbound network access for live
+data; see "Data mode" below for the offline fallback.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Data mode
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Live by default.** `app/api/quotes/route.ts` fetches CMP from Yahoo Finance
+(`lib/yahoo.ts`) and `app/api/fundamentals/route.ts` fetches P/E ratio from Google Finance
+(`lib/google.ts`). Every holding that either source can't resolve falls back to the mock
+generator (`lib/mock-data.ts`) for that field only — never a blank cell — and is tagged
+`source: 'mock'` in the API response, shown as a dot next to the value in the UI (hover it to
+see exactly where that number came from). Set `DATA_MODE=mock` in `.env.local` to force the
+synthetic generator everywhere, for an offline or fast demo.
 
-## Learn More
+Fundamentals still include two of the PRD's seeded quirks regardless of data mode: Savani
+Financials' and SBI Life's missing-P/E/negative-earnings cases are part of the mock seed data
+itself (used whenever that holding falls back to mock), and the Clean Science/Deepak
+Nitrite/Fine Organic/Gravita suspicious-duplicate P/E is mock-only by construction — it's a
+demonstration of a scraping artifact, and is switched off once a real, distinct P/E comes back
+from Google for those holdings.
 
-To learn more about Next.js, take a look at the following resources:
+See `TECHNICAL_WRITEUP.md` for the specific things found while building the live integration
+(symbol-mapping mismatches, which Google Finance URL suffix actually renders the stats panel,
+which two holdings have no Yahoo coverage at all, and why).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+app/
+  page.tsx                 Server Component shell — reads data/holdings.json
+  api/quotes/route.ts       GET — live CMP (Yahoo) for active holdings, TTL-cached
+  api/fundamentals/route.ts GET — live P/E (Google) + earnings, TTL-cached
+components/
+  dashboard/                SummaryCards, charts, HoldingsTable, motion primitives
+  ui/                       Badge, Tooltip, Skeleton, icons
+lib/
+  calculations.ts           Pure functions: investment, present value, gain/loss, grouping
+  cache.ts                  Minimal TTL cache (soft/hard expiry)
+  yahoo.ts                  Live CMP fetcher (Yahoo Finance chart endpoint)
+  google.ts                 Live P/E scraper (Google Finance quote page)
+  symbolMap.ts              Scrip-code -> ticker resolution for both of the above
+  mock-data.ts              Deterministic-ish mock quote/fundamentals generator (fallback path)
+  usePortfolioPolling.ts     15s client poll, Page Visibility pause/resume, error state
+types/holding.ts             Shared data model
+data/holdings.json           Seed: 26 active + 3 sold holdings across 6 sectors
+```
 
-## Deploy on Vercel
+## Known limitations
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- "Latest Earnings" has no live path via either source — see `TECHNICAL_WRITEUP.md` §1 for why.
+  Always mock, always tagged as such.
+- Live data depends on outbound network access to `query1.finance.yahoo.com` and
+  `www.google.com/finance` from wherever this runs; if that's blocked, every symbol falls back
+  to mock automatically (same code path as a per-symbol failure) rather than erroring.
+- No auth, single portfolio, no write access — matches the PRD's stated non-goals.

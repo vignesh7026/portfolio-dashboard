@@ -1,0 +1,37 @@
+[
+  { "id": "hdfc-bank", "particulars": "HDFC Bank", "sector": "Financial", "exchangeCodeRaw": "HDFCBANK", "exchange": "NSE", "purchasePrice": 1490, "qty": 50, "status": "active" },
+  { "id": "bajaj-finance", "particulars": "Bajaj Finance", "sector": "Financial", "exchangeCodeRaw": "BAJFINANCE", "exchange": "NSE", "purchasePrice": 6466, "qty": 15, "status": "active" },
+  { "id": "icici-bank", "particulars": "ICICI Bank", "sector": "Financial", "exchangeCodeRaw": "532174", "exchange": "BSE", "purchasePrice": 780, "qty": 84, "status": "active" },
+  { "id": "bajaj-housing", "particulars": "Bajaj Housing", "sector": "Financial", "exchangeCodeRaw": "544252", "exchange": "BSE", "purchasePrice": 130, "qty": 504, "status": "active" },
+  { "id": "savani-financials", "particulars": "Savani Financials", "sector": "Financial", "exchangeCodeRaw": "511577", "exchange": "BSE", "purchasePrice": 24, "qty": 1080, "status": "active" },
+
+  { "id": "affle-india", "particulars": "Affle India", "sector": "Tech", "exchangeCodeRaw": "AFFLE", "exchange": "NSE", "purchasePrice": 1151, "qty": 50, "status": "active" },
+  { "id": "lti-mindtree", "particulars": "LTI Mindtree", "sector": "Tech", "exchangeCodeRaw": "LTIM", "exchange": "NSE", "purchasePrice": 4775, "qty": 16, "status": "active" },
+  { "id": "kpit-tech", "particulars": "KPIT Tech", "sector": "Tech", "exchangeCodeRaw": "542651", "exchange": "BSE", "purchasePrice": 672, "qty": 61, "status": "active" },
+  { "id": "tata-tech", "particulars": "Tata Tech", "sector": "Tech", "exchangeCodeRaw": "544028", "exchange": "BSE", "purchasePrice": 1072, "qty": 63, "status": "active" },
+  { "id": "bls-e-services", "particulars": "BLS E-Services", "sector": "Tech", "exchangeCodeRaw": "544107", "exchange": "BSE", "purchasePrice": 232, "qty": 191, "status": "active" },
+  { "id": "tanla", "particulars": "Tanla", "sector": "Tech", "exchangeCodeRaw": "532790", "exchange": "BSE", "purchasePrice": 1134, "qty": 45, "status": "active" },
+
+  { "id": "dmart", "particulars": "Dmart", "sector": "Consumer", "exchangeCodeRaw": "DMART", "exchange": "NSE", "purchasePrice": 3777, "qty": 27, "status": "active" },
+  { "id": "tata-consumer", "particulars": "Tata Consumer", "sector": "Consumer", "exchangeCodeRaw": "532540", "exchange": "BSE", "purchasePrice": 845, "qty": 90, "status": "active" },
+  { "id": "pidilite", "particulars": "Pidilite", "sector": "Consumer", "exchangeCodeRaw": "500331", "exchange": "BSE", "purchasePrice": 2376, "qty": 36, "status": "active" },
+
+  { "id": "tata-power", "particulars": "Tata Power", "sector": "Power", "exchangeCodeRaw": "500400", "exchange": "BSE", "purchasePrice": 224, "qty": 225, "status": "active" },
+  { "id": "kpi-green", "particulars": "KPI Green", "sector": "Power", "exchangeCodeRaw": "542323", "exchange": "BSE", "purchasePrice": 875, "qty": 50, "status": "active" },
+  { "id": "suzlon", "particulars": "Suzlon", "sector": "Power", "exchangeCodeRaw": "532667", "exchange": "BSE", "purchasePrice": 44, "qty": 450, "status": "active" },
+  { "id": "gensol", "particulars": "Gensol", "sector": "Power", "exchangeCodeRaw": "542851", "exchange": "BSE", "purchasePrice": 998, "qty": 45, "status": "active" },
+
+  { "id": "hariom-pipes", "particulars": "Hariom Pipes", "sector": "Pipe", "exchangeCodeRaw": "543517", "exchange": "BSE", "purchasePrice": 580, "qty": 60, "status": "active" },
+  { "id": "astral", "particulars": "Astral", "sector": "Pipe", "exchangeCodeRaw": "ASTRAL", "exchange": "NSE", "purchasePrice": 1517, "qty": 56, "status": "active" },
+  { "id": "polycab", "particulars": "Polycab", "sector": "Pipe", "exchangeCodeRaw": "542652", "exchange": "BSE", "purchasePrice": 2818, "qty": 28, "status": "active" },
+
+  { "id": "clean-science", "particulars": "Clean Science", "sector": "Others", "exchangeCodeRaw": "543318", "exchange": "BSE", "purchasePrice": 1610, "qty": 32, "status": "active" },
+  { "id": "deepak-nitrite", "particulars": "Deepak Nitrite", "sector": "Others", "exchangeCodeRaw": "506401", "exchange": "BSE", "purchasePrice": 2248, "qty": 27, "status": "active" },
+  { "id": "fine-organic", "particulars": "Fine Organic", "sector": "Others", "exchangeCodeRaw": "541557", "exchange": "BSE", "purchasePrice": 4284, "qty": 16, "status": "active" },
+  { "id": "gravita", "particulars": "Gravita", "sector": "Others", "exchangeCodeRaw": "533282", "exchange": "BSE", "purchasePrice": 2037, "qty": 8, "status": "active" },
+  { "id": "sbi-life", "particulars": "SBI Life", "sector": "Others", "exchangeCodeRaw": "540719", "exchange": "BSE", "purchasePrice": 1197, "qty": 49, "status": "active" },
+
+  { "id": "infy", "particulars": "Infy", "sector": "Tech", "exchangeCodeRaw": "500209", "exchange": "BSE", "purchasePrice": 1647, "qty": 36, "status": "sold", "soldPrice": 1920 },
+  { "id": "happiest-minds", "particulars": "Happiest Minds", "sector": "Tech", "exchangeCodeRaw": "543237", "exchange": "BSE", "purchasePrice": 1103, "qty": 45, "status": "sold", "soldPrice": 716 },
+  { "id": "easemytrip", "particulars": "Easemytrip", "sector": "Consumer", "exchangeCodeRaw": "543272", "exchange": "BSE", "purchasePrice": 20, "qty": 1332, "status": "sold", "soldPrice": 15.5 }
+]
