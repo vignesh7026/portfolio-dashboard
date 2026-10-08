@@ -2,9 +2,12 @@
 
 A sector-grouped, live-refreshing view of a 29-holding equity portfolio (26 active, 3 realized),
 built with the Next.js App Router. Fetches real CMP from Yahoo Finance and real P/E ratio from
-Google Finance (both unofficial, scraped sources — see `TECHNICAL_WRITEUP.md` for exactly how
-and where that breaks down), with automatic per-field fallback to generated mock data when a
-source can't resolve a given holding.
+Google Finance (both unofficial, scraped sources — see `TECHNICAL_WRITEUP.md` /
+`TECHNICAL_WRITEUP.pdf` for exactly how and where that breaks down), with automatic per-field
+fallback to generated mock data when a source can't resolve a given holding.
+
+**Live demo:** https://portfolio-dashboard-psi-lake.vercel.app
+**Repo:** https://github.com/vignesh7026/portfolio-dashboard
 
 ## Tech stack
 
